@@ -23,3 +23,33 @@ let currentRoundNumber = 1;
 
 // Write your code below:
 
+const generateTarget = () => {
+  return Math.floor(Math.random() * 10);
+}
+
+// const compareGuesses = (humanGuess, computerGuess, targetGuess) => {
+//   const humanDifference = Math.abs(targetGuess - humanGuess);
+//   const computerDifference = Math.abs(targetGuess - computerGuess);
+//   return humanDifference <= computerDifference;
+// }
+
+const updateScore = winner => {
+  if (winner === 'human') {
+    humanScore++;
+  } else if (winner === 'computer') {
+    computerScore++;
+  }
+}
+
+const advanceRound = () => currentRoundNumber++;
+
+const getAbsoluteDistance = (num1, num2) => Math.abs(num1 - num2);
+
+const compareGuesses = (humanGuess, computerGuess, targetGuess) => {
+  if (humanGuess < 0 || humanGuess > 9) {
+    alert('Your number is out of range');
+  }
+  const humanDifference = getAbsoluteDistance(humanGuess, targetGuess);
+  const computerDifference = getAbsoluteDistance(computerGuess, targetGuess);
+  return humanDifference <= computerDifference;
+}   // end of compareGuesses function
